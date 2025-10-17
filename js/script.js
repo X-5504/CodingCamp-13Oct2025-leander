@@ -61,20 +61,20 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         taskElement.innerHTML = `
-                            <input type="checkbox" data-id="${task.id}" class="task-checkbox h-5 w-5 rounded-full border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer" ${task.completed ? 'checked' : ''}>
-                            <div class="flex-grow ml-4">
-                                <p class="font-medium ${task.completed ? 'line-through text-gray-500' : 'text-gray-800'}">${task.text}</p>
-                                <div class="flex items-center gap-4 text-sm mt-1">
-                                    ${task.dueDate ? `<span class="text-gray-500">${new Date(task.dueDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>` : ''}
-                                    <span class="capitalize text-xs font-semibold px-2 py-1 rounded-full ${priorityColors[task.priority]}">${task.priority}</span>
-                                </div>
-                            </div>
-                            <button data-id="${task.id}" class="delete-btn text-gray-400 hover:text-red-500 ml-4 p-1 rounded-full transition">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                </svg>
-                            </button>
-                        `;
+                    <input type="checkbox" data-id="${task.id}" class="task-checkbox h-5 w-5 rounded-full border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer" ${task.completed ? 'checked' : ''}>
+                    <div class="flex-grow ml-4">
+                        <p class="font-medium ${task.completed ? 'line-through text-gray-500' : 'text-gray-800'}">${task.text}</p>
+                        <div class="flex items-center gap-4 text-sm mt-1">
+                            ${task.dueDate ? `<span class="text-gray-500">${new Date(task.dueDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>` : ''}
+                            <span class="capitalize text-xs font-semibold px-2 py-1 rounded-full ${priorityColors[task.priority]}">${task.priority}</span>
+                        </div>
+                    </div>
+                    <button data-id="${task.id}" class="delete-btn text-gray-400 hover:text-red-500 ml-4 p-1 rounded-full transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                    </button>
+                `;
         taskListContainer.appendChild(taskElement);
       });
     }
