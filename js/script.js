@@ -11,17 +11,28 @@ document.addEventListener('DOMContentLoaded', () => {
   const validationMessage = document.getElementById('validation-message');
 
   // App State
-  let tasks = JSON.parse(localStorage.getItem('tasks')) || [
-    { id: 1, text: 'Setup CI/CD pipeline for the new project', dueDate: '2025-10-18', priority: 'high', completed: false },
-    { id: 2, text: 'Refactor the authentication module', dueDate: '2025-10-20', priority: 'medium', completed: false },
-    { id: 3, text: 'Write documentation for the API endpoints', dueDate: '2025-10-22', priority: 'low', completed: true },
-    { id: 4, text: 'Deploy the latest build to staging environment', dueDate: '', priority: 'medium', completed: false },
-  ];
+  let tasks = [];
   let currentFilter = 'all';
 
   // Functions
   const saveTasks = () => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
+  };
+
+  const loadTasks = () => {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks === null) {
+      // If no tasks in storage, it's a first visit. Load dummy data.
+      tasks = [
+        { id: 1, text: 'Setup CI/CD pipeline for the new project', dueDate: '2025-10-18', priority: 'high', completed: false },
+        { id: 2, text: 'Refactor the authentication module', dueDate: '2025-10-20', priority: 'medium', completed: false },
+        { id: 3, text: 'Write documentation for the API endpoints', dueDate: '2025-10-22', priority: 'low', completed: true },
+        { id: 4, text: 'Deploy the latest build to staging environment', dueDate: '', priority: 'medium', completed: false },
+      ];
+      saveTasks();
+    } else {
+      tasks = JSON.parse(storedTasks);
+    }
   };
 
   const renderTasks = () => {
@@ -142,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Reset placeholder on new input
+  // Reset validation on new input
   taskInput.addEventListener('input', () => {
     if (!validationMessage.classList.contains('hidden')) {
       validationMessage.classList.add('hidden');
@@ -163,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTasks();
   });
 
-  // Initial Render
+  // Initial Load and Render
+  loadTasks();
   renderTasks();
 });

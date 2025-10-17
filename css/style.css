@@ -27,6 +27,7 @@ body {
 .task-list::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+/* Animation for validation feedback */
 @keyframes shake {
   0%,
   100% {
